@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090b">
+<title>ROS ABI | Founder Control Center</title>
+
+<style>
+:root {
+  --bg:#09090b;
+  --panel:#17171b;
+  --gold:#d6b35c;
+  --gold2:#f2d98b;
+  --text:#f5f2e9;
+  --muted:#aaa39a;
+  --green:#55c98b;
+  --red:#ef7777;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  background:radial-gradient(ellipse at top,#29200e,#09090b 65%);
+  color:var(--text);
+  font-family:Arial, sans-serif;
+}
+
+header {
+  padding:20px 16px;
+  background:#101013;
+  border-bottom:1px solid #493b20;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.logo {
+  width:45px;
+  height:45px;
+  border:2px solid var(--gold);
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  color:var(--gold2);
+  font-weight:bold;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand strong {
+  letter-spacing:2px;
+  font-size:18px;
+}
+
+.brand small {
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:4px;
+}
+
+.badge {
+  color:var(--gold2);
+  border:1px solid var(--gold);
+  border-radius:20px;
+  padding:7px;
+  font-size:10px;
+}
+
+main {
+  max-width:950px;
+  margin:auto;
+  padding:22px 15px;
+}
+
+.eyebrow {
+  color:var(--gold);
+  letter-spacing:3px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+h1 {
+  font-size:36px;
+  line-height:1.1;
+  margin:12px 0;
+}
+
+.gold { color:var(--gold2); }
+
+.description {
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.notice {
+  background:#211b0e;
+  border:1px solid #80652d;
+  border-radius:13px;
+  padding:15px;
+  margin:22px 0;
+  color:#e9d8a7;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.card {
+  background:linear-gradient(145deg,#1c1c20,#111114);
+  border:1px solid #373027;
+  border-radius:15px;
+  padding:16px;
+}
+
+.card h2 {
+  font-size:13px;
+  color:#e8dfc8;
+  margin:0 0 13px;
+}
+
+.metric {
+  font-size:29px;
+  font-weight:bold;
+}
+
+.sub {
+  color:var(--muted);
+  font-size:12px;
+  margin-top:7px;
+}
+
+.full { grid-column:1/-1; }
+
+.status {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:14px;
+}
+
+.dot {
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--red);
+}
+
+.dot.on { background:var(--green); }
+
+.actions {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+button {
+  padding:13px 8px;
+  border-radius:10px;
+  border:1px solid var(--gold);
+  background:#29200e;
+  color:var(--gold2);
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button.secondary {
+  background:#19191d;
+  border-color:#454047;
+  color:white;
+}
+
+.row {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid #302c27;
+  font-size:13px;
+}
+
+.row span:last-child {
+  color:var(--muted);
+  text-align:right;
+}
+
+footer {
+  text-align:center;
+  color:var(--muted);
+  font-size:11px;
+  padding:25px 10px;
+  border-top:1px solid #373027;
+  margin-top:25px;
+}
+
+@media(max-width:480px) {
+  .grid { grid-template-columns:1fr; }
+  h1 { font-size:32px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">ABI</div>
+    <div>
+      <strong>ROS ABI</strong>
+      <small>FOUNDER CONTROL CENTER</small>
+    </div>
+  </div>
+  <div class="badge">OWNER · DEMO</div>
+</header>
+
+<main>
+
+<section>
+  <div class="eyebrow">WELCOME, FOUNDER</div>
+  <h1>Your Game.<br><span class="gold">Your Command.</span></h1>
+  <p class="description">
+    Welcome to the official ROS ABI independent game project.
+    Your owner dashboard starts here.
+  </p>
+</section>
+
+<div class="notice">
+  <strong>PROJECT STATUS:</strong><br>
+  ROS ABI is currently in the prototype stage.
+  This dashboard is a visual demonstration.
+  No real multiplayer server or player database is connected yet.
+</div>
+
+<div class="grid">
+
+<section class="card">
+  <h2>GAME SERVER STATUS</h2>
+  <div class="status">
+    <span class="dot" id="dot"></span>
+    <span id="serverState">Not deployed</span>
+  </div>
+  <div class="sub">Server connection</div>
+</section>
+
+<section class="card">
+  <h2>PLAYERS ONLINE</h2>
+  <div class="metric">—</div>
+  <div class="sub">Waiting for multiplayer backend</div>
+</section>
+
+<section class="card">
+  <h2>ACTIVE MATCHES</h2>
+  <div class="metric">—</div>
+  <div class="sub">Matchmaking not connected</div>
+</section>
+
+<section class="card">
+  <h2>PROJECT BUILD</h2>
+  <div class="metric">01</div>
+  <div class="sub">Owner dashboard prototype</div>
+</section>
+
+<section class="card full">
+  <h2>SERVER CONTROLS · DEMO</h2>
+  <div class="actions">
+    <button onclick="demo('start')">▶ START</button>
+    <button class="secondary" onclick="demo('stop')">■ STOP</button>
+    <button class="secondary" onclick="demo('restart')">↻ RESTART</button>
+    <button class="secondary" onclick="alert('Real server is not deployed yet.')">⚙ SETTINGS</button>
+  </div>
+  <div class="sub">These buttons demonstrate the dashboard only.</div>
+</section>
+
+<section class="card full">
+  <h2>FOUNDER MANAGEMENT TOOLS</h2>
+  <div class="row">
+    <span>Player Management</span>
+    <span>Not connected</span>
+  </div>
+  <div class="row">
+    <span>Ban / Unban Players</span>
+    <span>Not connected</span>
+  </div>
+  <div class="row">
+    <span>Private Matches</span>
+    <span>Not connected</span>
+  </div>
+  <div class="row">
+    <span>Game Configuration</span>
+    <span>Not connected</span>
+  </div>
+  <div class="row">
+    <span>Server Monitoring</span>
+    <span>Not connected</span>
+  </div>
+</section>
+
+<section class="card full">
+  <h2>ROS ABI DEVELOPMENT ROADMAP</h2>
+  <div class="row">
+    <span>01 · Owner Dashboard</span>
+    <span>Prototype</span>
+  </div>
+  <div class="row">
+    <span>02 · Game Design</span>
+    <span>Planned</span>
+  </div>
+  <div class="row">
+    <span>03 · Battle Royale Map</span>
+    <span>Planned</span>
+  </div>
+  <div class="row">
+    <span>04 · Multiplayer System</span>
+    <span>Planned</span>
+  </div>
+  <div class="row">
+    <span>05 · iOS Build</span>
+    <span>Planned</span>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  ROS ABI · Independent fan-made project concept.<br>
+  Not affiliated with or endorsed by NetEase.
+  Use original or properly licensed game assets.
+</footer>
+
+</main>
+
+<script>
+function demo(action) {
+  const state = document.getElementById("serverState");
+  const dot = document.getElementById("dot");
+
+  if (action === "start") {
+    state.textContent = "Demo: START requested";
+    dot.className = "dot on";
+  }
+
+  if (action === "stop") {
+    state.textContent = "Demo: STOP requested";
+    dot.className = "dot";
+  }
+
+  if (action === "restart") {
+    state.textContent = "Demo: RESTART requested";
+    dot.className = "dot on";
+  }
+}
+</script>
+
+</body>
+</html>
